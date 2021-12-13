@@ -19,14 +19,14 @@ def play_game():
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     word = get_word()
     letters_guessed = []
-    tries = 10
+    tries = 7
     guessed = False
 
     print('The word contains', len(word), 'letters.')
     print(len(word) * '*')
     while guessed == False and tries > 0:
         print('You have ' + str(tries) + ' tries')
-        guess = input('Please enter one letter or the full word.').lower()
+        guess = input('Please enter your next guess: ').lower()
         #1 - user inputs a letter
         if len(guess) == 1:
             if guess not in alphabet:
@@ -40,16 +40,24 @@ def play_game():
             elif guess in word:
                 print('Well done, that letter exists in the word!')
                 letters_guessed.append(guess)
+            #   k = word.count(guess) #k stores the number of times the guessed letter occurs in the word
+            #   for _ in range(k):    
+            #        letterGuessed += guess # The guess letter is added as many times as it occurs
+            #    # Print the word
+            #    for char in word:
+            #        if char in letterGuessed and (Counter(letterGuessed) != Counter(word)):
+            #            print(char, end = ' ')
+            #            correct += 1
             else:
                 print('No idea why we get this message, should be investigated further!')
 
         #2 - user inputs the full word
         elif len(guess) == len(word):
             if guess == word:
-                print('Well done, you have guessed the word!')
+                print('Congratulations you win!')
                 guessed = True
             else:
-                print('Sorry, that was not the word we were looking for :(')
+                print('You Lose :(')
                 tries -= 1
 
         #3 - user inputs letters where the total number of letters =/= total number of letters in the word.  
@@ -66,10 +74,10 @@ def play_game():
             print(status)
 
         if status == word:
-            print('Well done, you have guessed the word!')
+            print('Congratulations you win!')
             guessed = True
         elif tries == 0:
-            print('You have run out of guesses and you haven\'t guessed the word.')
+            print('You Lose')
 
     play_again()
 
