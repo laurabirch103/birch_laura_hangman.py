@@ -1,3 +1,14 @@
+def get_word(): file = open('word_list.txt') 
+#opens word_list file words = file.readlines() 
+#reads lines word = random.choice(words) 
+#randomly selects word from file word = str(word).strip('\n') #strips each word at start of new line file.close() 
+#closes the read file return word 
+#provides the word
+def get_word(): file = open('word_list.txt') #opens word_list file words = file.readlines() #reads lines word = random.choice(words) #randomly selects word from file word = str(word).strip('\n') #strips each word at start of new line file.close() #closes the read file return word #provides the word
+
+#Function to play Hangman def play_game(): alphabet = 'abcdefghijklmnopqrstuvwxyz'
+word = get_word() #Calls the function to get the random word from the file letters_guessed = [] #sets list up for letters guessed tries = 7 #sets number of tries guessed = False #sets boolean to be used for While loop
+
 import random                       #imports random function
 
 # Function to import the word from the provided list
